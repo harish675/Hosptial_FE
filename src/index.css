@@ -1,0 +1,1158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN SYSTEM — Premium Healthcare Design Tokens
+   ============================================================ */
+@theme {
+  /* Brand & semantic colors */
+  --color-primary: #1d4ed8;
+  --color-primary-dark: #1e3a8a;
+  --color-primary-light: #3b82f6;
+  --color-royal: #1e40af;
+  --color-teal: #0891b2;
+  --color-teal-light: #06b6d4;
+  --color-aqua: #22d3ee;
+  --color-emerald: #059669;
+  --color-emerald-light: #10b981;
+  --color-emergency: #dc2626;
+  --color-emergency-light: #ef4444;
+
+  /* Neutral base */
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f8fafc;
+  --color-surface-tint: #f1f5f9;
+
+  /* Spacing scale */
+  --spacing-section: 72px;
+  --spacing-section-sm: 48px;
+
+  /* Radius scale */
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  /* Shadow scale */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 20px 45px rgba(29, 78, 216, 0.12);
+  --shadow-xl: 0 30px 60px rgba(15, 23, 42, 0.14);
+
+  /* Typography scale */
+  --text-hero: clamp(2.25rem, 1.5rem + 3.2vw, 4rem);
+  --text-h2: clamp(1.75rem, 1.3rem + 1.8vw, 2.5rem);
+  --text-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  min-width: 320px;
+  font-family: 'Inter', sans-serif;
+  color: var(--color-ink);
+  background: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100vh;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+/* ============================================================
+   CUSTOM SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eef2f7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #1d4ed8, #0891b2);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1e40af;
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+.text-hero {
+  font-size: var(--text-hero);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.heading-xl {
+  font-size: var(--text-h2);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.heading-md {
+  font-size: var(--text-h3);
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.text-lead {
+  font-size: var(--text-lead);
+  line-height: 1.65;
+}
+
+.measure {
+  max-width: 65ch;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #1d4ed8, #0891b2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   LAYOUT & SURFACES
+   ============================================================ */
+.section-pad {
+  padding: 48px 0;
+}
+
+@media (min-width: 768px) {
+  .section-pad {
+    padding: var(--spacing-section-sm) 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-pad {
+    padding: var(--spacing-section) 0;
+  }
+}
+
+/* Shared page + header container */
+.site-container {
+  width: min(100% - 32px, 1320px);
+  margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .site-container {
+    width: min(100% - 48px, 1320px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-container {
+    width: min(100% - 72px, 1320px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .site-container {
+    width: min(100% - 96px, 1320px);
+  }
+}
+
+.section-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .section-stack {
+    gap: 40px;
+  }
+}
+
+.card-surface {
+  background: #ffffff;
+  border: 1px solid #eef2f7;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card-hover {
+  transition:
+    transform 0.3s cubic-bezier(0.21, 0.47, 0.32, 0.98),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(96, 165, 250, 0.35) 1px, transparent 1px);
+  background-size: 38px 38px;
+}
+
+/* ============================================================
+   PREMIUM HERO SECTION
+   ============================================================ */
+.hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 720px;
+  overflow: hidden;
+  background: #0b1d63;
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    min-height: 820px;
+  }
+}
+
+.hero-bg-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 42% at 82% 16%, rgba(77, 227, 255, 0.16), transparent 58%),
+    radial-gradient(ellipse 38% 32% at 52% 48%, rgba(13, 138, 143, 0.1), transparent 55%),
+    radial-gradient(ellipse 34% 28% at 14% 72%, rgba(23, 60, 143, 0.18), transparent 52%),
+    linear-gradient(128deg, #071445 0%, #0b1d63 32%, #173c8f 58%, #0d4a6e 82%, #0d8a8f 100%);
+}
+
+/* ── Background zones ── */
+.hero-zone {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-zone-left {
+  z-index: 1;
+}
+
+.hero-zone-center {
+  z-index: 2;
+}
+
+.hero-zone-right {
+  z-index: 3;
+}
+
+/* Glow orbs */
+.hero-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  animation: hero-orb-drift 24s ease-in-out infinite;
+}
+
+.hero-bg-orb-left {
+  width: 260px;
+  height: 260px;
+  left: -4%;
+  top: 28%;
+  background: rgba(23, 60, 143, 0.22);
+  animation-delay: -5s;
+}
+
+.hero-bg-orb-center {
+  width: 320px;
+  height: 320px;
+  left: 42%;
+  top: 18%;
+  background: rgba(13, 138, 143, 0.12);
+  animation-delay: -10s;
+}
+
+.hero-bg-orb-right {
+  width: 440px;
+  height: 440px;
+  right: 4%;
+  top: 4%;
+  background: rgba(77, 227, 255, 0.1);
+}
+
+/* Floating particles */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(77, 227, 255, 0.55);
+  box-shadow: 0 0 10px rgba(77, 227, 255, 0.35);
+  animation: hero-particle-drift 9s ease-in-out infinite;
+}
+
+.hero-particles-left .hero-particle {
+  opacity: 0.35;
+}
+
+.hero-particles-center .hero-particle {
+  opacity: 0.28;
+}
+
+/* ECG wave — left background */
+.hero-ecg {
+  position: absolute;
+  left: 0;
+  bottom: 22%;
+  width: min(42vw, 480px);
+  opacity: 0.55;
+  animation: hero-ecg-drift 18s ease-in-out infinite;
+}
+
+.hero-ecg-line {
+  stroke-dasharray: 520;
+  animation: hero-ecg-draw 14s linear infinite;
+}
+
+.hero-ecg-glow {
+  filter: blur(2px);
+}
+
+/* Molecule mesh — left */
+.hero-molecule {
+  position: absolute;
+  opacity: 0.7;
+}
+
+.hero-molecule-left {
+  left: 6%;
+  top: 14%;
+  width: min(22vw, 240px);
+  animation: hero-molecule-float 20s ease-in-out infinite;
+}
+
+.hero-molecule-node {
+  animation: hero-node-pulse 4s ease-in-out infinite;
+}
+
+.hero-molecule-edge {
+  animation: hero-edge-breathe 5s ease-in-out infinite;
+}
+
+/* Center bridge lines */
+.hero-bridge {
+  position: absolute;
+  left: 18%;
+  top: 30%;
+  width: 68%;
+  height: auto;
+  opacity: 0.65;
+}
+
+.hero-bridge-line {
+  stroke-dasharray: 8 12;
+  animation: hero-bridge-flow 22s linear infinite;
+}
+
+.hero-bridge-line-alt {
+  animation-duration: 28s;
+  animation-direction: reverse;
+}
+
+/* Center pulse rings */
+.hero-pulse-rings {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-pulse-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 120px;
+  height: 120px;
+  margin: -60px 0 0 -60px;
+  border-radius: 50%;
+  border: 1px solid rgba(77, 227, 255, 0.12);
+  animation: hero-pulse-expand 8s ease-out infinite;
+}
+
+.hero-pulse-ring:nth-child(2) {
+  animation-delay: 2.6s;
+}
+
+.hero-pulse-ring:nth-child(3) {
+  animation-delay: 5.2s;
+}
+
+.hero-center-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(77, 227, 255, 0.07);
+  animation: hero-ring-pulse 16s ease-in-out infinite;
+}
+
+.hero-center-ring-one {
+  width: 280px;
+  height: 280px;
+  left: 44%;
+  top: 26%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-center-ring-two {
+  width: 420px;
+  height: 420px;
+  left: 50%;
+  top: 38%;
+  transform: translate(-50%, -50%);
+  opacity: 0.45;
+  animation-delay: -7s;
+}
+
+/* Right-side rings */
+.hero-bg-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(77, 227, 255, 0.1);
+  animation: hero-ring-pulse 14s ease-in-out infinite;
+}
+
+.hero-bg-ring-one {
+  width: 340px;
+  height: 340px;
+  right: 10%;
+  top: 12%;
+}
+
+.hero-bg-ring-two {
+  width: 520px;
+  height: 520px;
+  right: -2%;
+  top: 6%;
+  opacity: 0.45;
+  animation-delay: -6s;
+}
+
+.hero-bg-dots {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  opacity: 0.035;
+  background-image: radial-gradient(circle, rgba(186, 230, 253, 0.9) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.hero-bg-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: radial-gradient(ellipse 92% 82% at 50% 50%, transparent 38%, rgba(7, 20, 69, 0.42) 100%);
+}
+
+.hero-bg-text-shield {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  background:
+    radial-gradient(ellipse 55% 70% at 18% 50%, rgba(7, 20, 69, 0.82) 0%, rgba(7, 20, 69, 0.38) 48%, transparent 72%),
+    linear-gradient(90deg, rgba(7, 20, 69, 0.55) 0%, rgba(7, 20, 69, 0.22) 36%, transparent 68%);
+}
+
+/* DNA helixes */
+.hero-dna-cluster {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-dna-helix {
+  position: absolute;
+  height: auto;
+  transform-origin: center center;
+}
+
+.hero-dna-primary {
+  right: 3%;
+  top: -5%;
+  width: min(40vw, 500px);
+  opacity: 0.38;
+  animation: hero-dna-float 17s ease-in-out infinite;
+}
+
+.hero-dna-secondary {
+  right: -4%;
+  top: 16%;
+  width: min(26vw, 320px);
+  opacity: 0.18;
+  animation: hero-dna-float-alt 21s ease-in-out infinite;
+  animation-delay: -8s;
+}
+
+.hero-dna-fragment-left {
+  left: -6%;
+  bottom: -8%;
+  width: min(18vw, 200px);
+  opacity: 0.1;
+  filter: blur(1.5px);
+  animation: hero-dna-float-alt 24s ease-in-out infinite;
+  animation-delay: -12s;
+}
+
+.hero-dna-fragment-center {
+  left: 38%;
+  top: 8%;
+  width: min(14vw, 160px);
+  opacity: 0.08;
+  filter: blur(2px);
+  animation: hero-dna-float 26s ease-in-out infinite;
+  animation-delay: -15s;
+}
+
+.hero-dna-strand {
+  stroke-dasharray: 6 10;
+  animation: hero-dna-flow 24s linear infinite;
+}
+
+.hero-dna-strand-alt {
+  animation-duration: 28s;
+  animation-direction: reverse;
+}
+
+.hero-dna-rung {
+  animation: hero-dna-rung-glow 4.5s ease-in-out infinite;
+}
+
+.hero-motion-static,
+.hero-motion-static .hero-dna-strand,
+.hero-motion-static .hero-dna-rung,
+.hero-motion-static .hero-bg-orb,
+.hero-motion-static .hero-bg-ring,
+.hero-motion-static .hero-particle,
+.hero-motion-static .hero-ecg-line,
+.hero-motion-static .hero-bridge-line,
+.hero-motion-static .hero-pulse-ring,
+.hero-motion-static .hero-center-ring,
+.hero-motion-static .hero-molecule,
+.hero-motion-static .hero-ecg {
+  animation: none !important;
+}
+
+.hero-content-wrap {
+  position: relative;
+  z-index: 10;
+  padding-block: 88px 120px;
+}
+
+@media (min-width: 1024px) {
+  .hero-content-wrap {
+    padding-block: 112px 140px;
+  }
+}
+
+.hero-content {
+  max-width: 680px;
+}
+
+@media (min-width: 1024px) {
+  .hero-content {
+    max-width: 720px;
+  }
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  padding: 8px 16px 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  background: rgba(15, 40, 80, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: 'Manrope', 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: rgba(224, 242, 254, 0.92);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+@media (min-width: 640px) {
+  .hero-eyebrow {
+    font-size: 0.875rem;
+    margin-bottom: 32px;
+  }
+}
+
+.hero-eyebrow-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 12px rgba(52, 211, 153, 0.65);
+  animation: hero-dot-pulse 2.8s ease-in-out infinite;
+}
+
+.hero-headline {
+  font-family: 'Plus Jakarta Sans', 'Manrope', sans-serif;
+  font-size: clamp(2.625rem, 1.75rem + 3.8vw, 4.625rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+}
+
+.hero-headline-line+.hero-headline-line {
+  margin-top: 0.06em;
+}
+
+.hero-headline-accent {
+  background: linear-gradient(115deg, #4de3ff 0%, #0d8a8f 48%, #bae6fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: hero-accent-shimmer 8s ease-in-out infinite;
+}
+
+.hero-lead {
+  margin-top: clamp(24px, 2vw, 36px);
+  max-width: 620px;
+  font-family: 'Manrope', 'Inter', sans-serif;
+  font-size: clamp(1.0625rem, 0.95rem + 0.45vw, 1.1875rem);
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.hero-trust-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: clamp(32px, 3vw, 44px);
+  padding: 0;
+  list-style: none;
+}
+
+.hero-trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(15, 35, 70, 0.38);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-family: 'Manrope', 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: rgba(241, 245, 249, 0.92);
+  white-space: nowrap;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+}
+
+@media (min-width: 640px) {
+  .hero-trust-pill {
+    font-size: 0.84375rem;
+    padding: 10px 16px;
+    gap: 9px;
+  }
+}
+
+.hero-trust-pill-icon {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  color: #4de3ff;
+  opacity: 0.9;
+}
+
+.hero-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  line-height: 0;
+}
+
+.hero-wave svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1023px) {
+  .hero-dna-primary {
+    right: -30%;
+    top: 0;
+    width: 80vw;
+    opacity: 0.2;
+  }
+
+  .hero-dna-secondary {
+    display: none;
+  }
+
+  .hero-dna-fragment-center {
+    opacity: 0.05;
+    left: 55%;
+  }
+
+  .hero-ecg {
+    opacity: 0.3;
+    bottom: 16%;
+  }
+
+  .hero-molecule-left {
+    opacity: 0.4;
+  }
+
+  .hero-pulse-rings,
+  .hero-center-ring-two {
+    opacity: 0.4;
+  }
+
+  .hero-bg-ring {
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero-content-wrap {
+    padding-block: 72px 100px;
+  }
+
+  .hero-trust-pill {
+    white-space: normal;
+  }
+
+  .hero-ecg,
+  .hero-molecule-left,
+  .hero-dna-fragment-left {
+    opacity: 0.18;
+  }
+
+  .hero-particles-left .hero-particle,
+  .hero-particles-center .hero-particle {
+    opacity: 0.15;
+  }
+
+  .hero-bridge {
+    opacity: 0.35;
+  }
+
+  .hero-dna-primary {
+    opacity: 0.14;
+  }
+}
+
+/* ============================================================
+   ANIMATION KEYFRAMES
+   ============================================================ */
+.blob {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: blob-morph 8s ease-in-out infinite;
+}
+
+@keyframes blob-morph {
+
+  0%,
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+
+  50% {
+    border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 12px rgba(220, 38, 38, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+.pulse-red {
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.float-anim {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes hero-dna-float {
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-3deg);
+  }
+
+  50% {
+    transform: translate3d(-14px, 18px, 0) rotate(1.5deg);
+  }
+}
+
+@keyframes hero-dna-float-alt {
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(5deg);
+  }
+
+  50% {
+    transform: translate3d(12px, -16px, 0) rotate(2deg);
+  }
+}
+
+@keyframes hero-dna-flow {
+  to {
+    stroke-dashoffset: -320;
+  }
+}
+
+@keyframes hero-dna-rung-glow {
+
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-orb-drift {
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(-20px, 16px, 0) scale(1.06);
+  }
+}
+
+@keyframes hero-ring-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: scale(1.04);
+    opacity: 0.55;
+  }
+}
+
+@keyframes hero-dot-pulse {
+
+  0%,
+  100% {
+    opacity: 0.75;
+    box-shadow: 0 0 8px rgba(52, 211, 153, 0.45);
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 16px rgba(52, 211, 153, 0.75);
+  }
+}
+
+@keyframes hero-accent-shimmer {
+
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 100% center;
+  }
+}
+
+@keyframes hero-particle-drift {
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translate3d(8px, -18px, 0);
+    opacity: 0.65;
+  }
+}
+
+@keyframes hero-ecg-drift {
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translate3d(6px, -8px, 0);
+    opacity: 0.65;
+  }
+}
+
+@keyframes hero-ecg-draw {
+  0% {
+    stroke-dashoffset: 520;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes hero-molecule-float {
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(10px, -12px, 0);
+  }
+}
+
+@keyframes hero-node-pulse {
+
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.85;
+    transform: scale(1.25);
+  }
+}
+
+.hero-molecule-node {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes hero-edge-breathe {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-bridge-flow {
+  to {
+    stroke-dashoffset: -240;
+  }
+}
+
+@keyframes hero-pulse-expand {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+input,
+textarea,
+select {
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+input:hover:not(:focus),
+textarea:hover:not(:focus),
+select:hover:not(:focus) {
+  border-color: #cbd5e1;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #1d4ed8;
+  box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.12);
+}
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(29, 78, 216, 0.55);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .card-hover:hover {
+    transform: none;
+  }
+
+  .float-anim,
+  .blob,
+  .pulse-red,
+  .hero-dna-helix,
+  .hero-dna-strand,
+  .hero-dna-rung,
+  .hero-bg-orb,
+  .hero-bg-ring,
+  .hero-center-ring,
+  .hero-particle,
+  .hero-ecg,
+  .hero-ecg-line,
+  .hero-molecule,
+  .hero-molecule-node,
+  .hero-bridge-line,
+  .hero-pulse-ring,
+  .hero-eyebrow-dot,
+  .hero-headline-accent {
+    animation: none !important;
+  }
+}
